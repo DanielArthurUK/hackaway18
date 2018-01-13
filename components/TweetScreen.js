@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, Card, Text} from 'react-native-elements';
-import {retrieveGifUrlForString, retrieveRandomOpinion} from "../utilities/TweetGenerator";
+import {retrieveGifUrlForString, retrieveRandomOpinion, retrieveRandomCrimeStatistic} from "../utilities/TweetGenerator";
 
 class TweetScreen extends Component {
 
@@ -11,6 +11,7 @@ class TweetScreen extends Component {
             tweet : {
                 content : "Waiting to retrieve your tweet!",
                 gif : "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image4.jpg",
+                crimeStat : ""
             },
             accessCode: this.props.accessCode,
         }
@@ -23,16 +24,23 @@ class TweetScreen extends Component {
     handleRefreshTweet = () => {
         const opinion = retrieveRandomOpinion();
         const tweetContent = opinion.string + " " + opinion.emoji;
-        retrieveGifUrlForString(opinion.emoji).then(url => {
+        retrieveGifUrlForString(opinion.emoji, function (url) {
             console.log(url);
             this.setState({
                 tweet: {
                     content: tweetContent,
-                    gif: url,
+                    gif: url
                 },
             });
-        }).catch(err => {
-            console.log(err);
+        });
+        // TODO: Pass in the current latitude/longitude.
+        retrieveRandomCrimeStatistic('51.4256730', '-0.5630630', function (crimeStatistic) {
+            console.log(crimeStatistic);
+            this.setState({
+                tweet: {
+                    crimeStat: crimeStatistic
+                }
+            })
         });
     };
 
@@ -43,6 +51,7 @@ class TweetScreen extends Component {
                 <Card
                     image={{uri: this.state.tweet.gif}}>
                     <Text style={{marginBottom: 10}}>
+                        {this.state.tweet.crimeStat}
                         {this.state.tweet.content}
                     </Text>
                     <Button
