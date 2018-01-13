@@ -1,17 +1,3 @@
-// NOTE: To use this API, you must do the following.
-//
-// import { retrieveRandomOpinion, retrieveGifUrlForString, retrieveRandomCrimeStatistic } from './utilities/TweetGenerator'
-//
-// var opinion = retrieveRandomOpinion();
-// console.log(opinion.string + " " + opinion.emoji);
-//
-// retrieveGifUrlForString(opinion.emoji, function (url) {
-//     console.log(url);
-// });
-//
-// retrieveRandomCrimeStatistic('51.4256730', '-0.5630630', function (crimeStatistic) {
-//     console.log(crimeStatistic);
-// });
 
 /*
  ██████  ██████  ██ ███    ██ ██  ██████  ███    ██     ███████ ████████ ██████  ██ ███    ██  ██████
@@ -34,7 +20,8 @@ const opinions = [
     { string: "Oh no! That's terrible", emoji : "😫" },
     { string: "Whoop-di-fucking-do", emoji : "🙄" },
     { string: "Do you think that deserves a medal?", emoji : "🤦‍" },
-    { string: "I was hoping that would be the case", emoji : "👏" }
+    { string: "That was the smartest thing you've said in a while^", emoji : "👏",
+    { string: "I was hoping that would be the case", emoji : "🎉" }
 ];
 
 export function retrieveRandomOpinion() {
@@ -63,7 +50,7 @@ export async function retrieveGifUrlForString(string, handler) {
         const responseJson = await response.json();
         const index = getRandomInt(0, limit - 1);
 
-        handler(responseJson.data[index].images.downsized_large.url)
+        handler(responseJson.data[index].images.original.url)
     } catch (error) {
         console.error(error);
     }
