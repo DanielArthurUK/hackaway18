@@ -42,7 +42,7 @@ const giphyApiKey = '0Jk0mubrPRIhTRQ3nkrM2SkCtwTZ4tbP';
 // Number of top results that should be randomly selected from.
 const limit = 15;
 
-export async function retrieveGifUrlForString(string, handler) {
+export async function retrieveGifUrlForString(string) {
     try {
         const response = await fetch(
             'https://api.giphy.com/v1/gifs/search?api_key=' + giphyApiKey + '&q=' + string + '&limit=' + limit + '&offset=0&rating=R&lang=en'
@@ -50,7 +50,7 @@ export async function retrieveGifUrlForString(string, handler) {
         const responseJson = await response.json();
         const index = getRandomInt(0, limit - 1);
 
-        handler(responseJson.data[index].images.original.url)
+        return responseJson.data[index].images.original.url;
     } catch (error) {
         console.error(error);
     }
@@ -77,7 +77,7 @@ function crimeNameFromCategory(category) {
     }
 }
 
-export async function retrieveRandomCrimeStatistic(latitude, longitude, handler) {
+export async function retrieveRandomCrimeStatistic(latitude, longitude) {
     try {
         const response = await fetch(
             'https://data.police.uk/api/crimes-street/all-crime?lat=' + latitude + '&lng=' + longitude
@@ -107,7 +107,7 @@ export async function retrieveRandomCrimeStatistic(latitude, longitude, handler)
         const index = getRandomInt(0, crimeNames.length - 1);
         const crime = crimeNames[index];
 
-        handler("There were " + crimeStatistics[crime] + " instances of " + crime + " here last month.");
+        return "There were " + crimeStatistics[crime] + " instances of " + crime + " here last month."
     } catch (error) {
         console.error(error);
     }
