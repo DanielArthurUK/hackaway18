@@ -1,14 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { retrieveRandomOpinion, retrieveGifUrlForString } from './utilities/TweetGenerator'
+import { retrieveRandomOpinion, retrieveGifUrlForString, retrieveRandomCrimeStatistic } from './utilities/TweetGenerator'
 
 export default class App extends React.Component {
     render() {
         var opinion = retrieveRandomOpinion();
         console.log(opinion.string + " " + opinion.emoji);
 
-        retrieveGifUrlForString(opinion.emoji).then(function (url) {
+        retrieveGifUrlForString(opinion.emoji, function (url) {
             console.log(url);
+        });
+
+        retrieveRandomCrimeStatistic('51.4256730', '-0.5630630', function (crimeStatistic) {
+            console.log(crimeStatistic);
         });
 
         return (
