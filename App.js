@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import TweetGenerator from './utilities/TweetGenerator';
+import { retrieveRandomOpinion, retrieveGifUrlForString } from './utilities/TweetGenerator'
 
 export default class App extends React.Component {
     render() {

@@ -18,7 +18,7 @@ const opinions = [
     { string: "Smartest thing you've said in a while^", emoji : "👏" }
 ];
 
-function retrieveRandomOpinion() {
+export function retrieveRandomOpinion() {
     const index = getRandomInt(0, opinions.length - 1);
     return opinions[index];
 }
@@ -30,7 +30,7 @@ const giphyApiKey = '0Jk0mubrPRIhTRQ3nkrM2SkCtwTZ4tbP';
 // Number of top results that should be randomly selected from.
 const limit = 5;
 
-async function retrieveGifUrlForString(string) {
+export async function retrieveGifUrlForString(string) {
     try {
         let response = await fetch(
             'https://api.giphy.com/v1/gifs/search?api_key=' + giphyApiKey + '&q=' + string + '&limit=' + limit + '&offset=0&rating=R&lang=en'
