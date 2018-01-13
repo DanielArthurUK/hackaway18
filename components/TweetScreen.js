@@ -12,9 +12,10 @@ class TweetScreen extends Component {
         super(props);
         this.state = {
             tweet : {
-                content : "Waiting to retrieve your tweet!",
+                reaction : "Waiting to retrieve your tweet!",
                 gif : "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image4.jpg",
-                crimeStat : ""
+                crimeStat : "",
+                content : "",
             },
             accessCode: this.props.accessCode,
         }
@@ -26,16 +27,17 @@ class TweetScreen extends Component {
 
     handleRefreshTweet = () => {
         const opinion = retrieveRandomOpinion();
-        const tweetContent = opinion.string + " " + opinion.emoji;
+        const generatedReaction = opinion.string + " " + opinion.emoji;
         retrieveGifUrlForString(opinion.emoji).then((url) => {
             // TODO: Pass in the current latitude/longitude.
             retrieveRandomCrimeStatistic('51.4256730', '-0.5630630').then((crimeStatistic) => {
                 console.log(crimeStatistic);
                 this.setState({
                     tweet: {
-                        content: tweetContent,
+                        reaction: generatedReaction,
                         gif: url,
-                        crimeStat: crimeStatistic
+                        crimeStat: crimeStatistic,
+                        content: crimeStatistic+" "+generatedReaction,
                     },
                 });
             });
@@ -64,7 +66,6 @@ class TweetScreen extends Component {
                     image={{uri: this.state.tweet.gif}}>
 
                     <Text style={{marginBottom: 10}}>
-                        {this.state.tweet.crimeStat}
                         {this.state.tweet.content}
                     </Text>
                     <Button
