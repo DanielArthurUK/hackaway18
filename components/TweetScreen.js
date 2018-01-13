@@ -45,7 +45,6 @@ class TweetScreen extends Component {
                         {this.state.tweet.content}
                     </Text>
                     <Button
-                        style={{display:"block", marginBottom:10}}
                         icon={{name: "refresh", type: "material-icons"}}
                         rounded
                         title="Refresh"
@@ -55,7 +54,6 @@ class TweetScreen extends Component {
                     <Button
                         backgroundColor={twitterBlue}
                         rounded title="Tweet this!"
-                        style={{display: "block", marginBottom:10}}
                     />
                 </Card>
             </View>
