@@ -12,6 +12,7 @@ class TweetScreen extends Component {
                 content : "Waiting to retrieve your tweet!",
                 gif : "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image4.jpg",
             },
+            accessCode: this.props.accessCode,
         }
     }
 
