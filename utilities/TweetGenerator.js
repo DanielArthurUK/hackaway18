@@ -50,7 +50,7 @@ export async function retrieveGifUrlForString(string, handler) {
         const responseJson = await response.json();
         const index = getRandomInt(0, limit - 1);
 
-        handler(responseJson.data[index].images.downsized_large.url)
+        handler(responseJson.data[index].images.original.url)
     } catch (error) {
         console.error(error);
     }

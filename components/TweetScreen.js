@@ -11,6 +11,7 @@ class TweetScreen extends Component {
             tweet : {
                 content : "Waiting to retrieve your tweet!",
                 gif : "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image4.jpg",
+                crimeStat : ""
             },
         }
     }
@@ -27,14 +28,18 @@ class TweetScreen extends Component {
             this.setState({
                 tweet: {
                     content: tweetContent,
-                    gif: url,
+                    gif: url
                 },
             });
         });
         // TODO: Pass in the current latitude/longitude.
         retrieveRandomCrimeStatistic('51.4256730', '-0.5630630', function (crimeStatistic) {
             console.log(crimeStatistic);
-            // TODO: Add this to the tweet content.
+            this.setState({
+                tweet: {
+                    crimeStat: crimeStatistic
+                }
+            })
         });
     };
 
@@ -45,6 +50,7 @@ class TweetScreen extends Component {
                 <Card
                     image={{uri: this.state.tweet.gif}}>
                     <Text style={{marginBottom: 10}}>
+                        {this.state.tweet.crimeStat}
                         {this.state.tweet.content}
                     </Text>
                     <Button
