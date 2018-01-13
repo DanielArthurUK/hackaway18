@@ -20,7 +20,8 @@ const opinions = [
     { string: "Oh no! That's terrible", emoji : "😫" },
     { string: "Whoop-di-fucking-do", emoji : "🙄" },
     { string: "Do you think that deserves a medal?", emoji : "🤦‍" },
-    { string: "I was hoping that would be the case", emoji : "👏" }
+    { string: "That was the smartest thing you've said in a while^", emoji : "👏",
+    { string: "I was hoping that would be the case", emoji : "🎉" }
 ];
 
 export function retrieveRandomOpinion() {
