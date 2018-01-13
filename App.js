@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginScreen from './components/LoginScreen';
+// import LoginScreen from './components/LoginScreen';
 import TweetScreen from './components/TweetScreen';
 import { StyleSheet, View } from 'react-native';
 
@@ -15,10 +15,10 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
