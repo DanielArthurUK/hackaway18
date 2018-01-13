@@ -3,6 +3,9 @@
 # expo
 .expo/
 
+# WebStorm
+.idea/
+
 # dependencies
 /node_modules
 
