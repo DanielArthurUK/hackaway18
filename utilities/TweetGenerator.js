@@ -32,11 +32,12 @@ const limit = 5;
 
 export async function retrieveGifUrlForString(string) {
     try {
-        let response = await fetch(
+        const response = await fetch(
             'https://api.giphy.com/v1/gifs/search?api_key=' + giphyApiKey + '&q=' + string + '&limit=' + limit + '&offset=0&rating=R&lang=en'
         );
-        let responseJson = await response.json();
+        const responseJson = await response.json();
         const index = getRandomInt(0, limit - 1);
+
         return responseJson.data[index].embed_url;
     } catch (error) {
         console.error(error);
