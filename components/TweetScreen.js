@@ -24,24 +24,20 @@ class TweetScreen extends Component {
     handleRefreshTweet = () => {
         const opinion = retrieveRandomOpinion();
         const tweetContent = opinion.string + " " + opinion.emoji;
-        retrieveGifUrlForString(opinion.emoji).then(function (url) {
-            console.log(url);
-            this.setState({
-                tweet: {
-                    content: tweetContent,
-                    gif: url
-                },
+        retrieveGifUrlForString(opinion.emoji).then((url) => {
+            // TODO: Pass in the current latitude/longitude.
+            retrieveRandomCrimeStatistic('51.4256730', '-0.5630630').then((crimeStatistic) => {
+                console.log(crimeStatistic);
+                this.setState({
+                    tweet: {
+                        content: tweetContent,
+                        gif: url,
+                        crimeStat: crimeStatistic
+                    },
+                });
             });
         });
-        // TODO: Pass in the current latitude/longitude.
-        retrieveRandomCrimeStatistic('51.4256730', '-0.5630630').then(function (crimeStatistic) {
-            console.log(crimeStatistic);
-            this.setState({
-                tweet: {
-                    crimeStat: crimeStatistic
-                }
-            })
-        });
+
     };
 
     render() {
