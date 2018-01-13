@@ -107,7 +107,13 @@ export async function retrieveRandomCrimeStatistic(latitude, longitude) {
         const index = getRandomInt(0, crimeNames.length - 1);
         const crime = crimeNames[index];
 
-        return "There were " + crimeStatistics[crime] + " instances of " + crime + " here last month."
+        if (crimeStatistics[crime] == 1){
+            return "There was " + crimeStatistics[crime] + " instances of " + crime + " here last month."
+        } else {
+            return "There were " + crimeStatistics[crime] + " instances of " + crime + " here last month."
+        }
+
+
     } catch (error) {
         console.error(error);
     }
