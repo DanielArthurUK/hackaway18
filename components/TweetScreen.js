@@ -35,7 +35,11 @@ class TweetScreen extends Component {
                         crimeStat: crimeStatistic
                     },
                 });
+            }).catch(function(error) {
+                console.log(error);
             });
+        }).catch(function(error) {
+            console.log(error);
         });
 
     };
@@ -48,6 +52,7 @@ class TweetScreen extends Component {
                     image={{uri: this.state.tweet.gif}}>
                     <Text style={{marginBottom: 10}}>
                         {this.state.tweet.crimeStat}
+
                         {this.state.tweet.content}
                     </Text>
                     <Button
