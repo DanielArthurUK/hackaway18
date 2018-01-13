@@ -3,5 +3,7 @@
     "sdkVersion": "23.0.0",
     "name": "Tweetophile",
     "icon": "./icon.png"
-  }
+  },
+  "name": "RoyalHackaway18",
+  "displayName": "Tweetophile"
 }
