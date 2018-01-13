@@ -9,8 +9,8 @@ class TweetScreen extends Component {
         super(props);
         this.state = {
             tweet : {
-                content : "",
-                gif : "",
+                content : "Waiting to retrieve your tweet!",
+                gif : "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image4.jpg",
             },
         }
     }
@@ -19,18 +19,21 @@ class TweetScreen extends Component {
         this.handleRefreshTweet();
     }
 
-    handleRefreshTweet() {
+    handleRefreshTweet = () => {
         const opinion = retrieveRandomOpinion();
         const tweetContent = opinion.string + " " + opinion.emoji;
-        retrieveGifUrlForString(opinion.emoji).then(function (url) {
+        retrieveGifUrlForString(opinion.emoji).then(url => {
+            console.log(url);
             this.setState({
                 tweet: {
                     content: tweetContent,
                     gif: url,
                 },
             });
+        }).catch(err => {
+            console.log(err);
         });
-    }
+    };
 
     render() {
         return (
@@ -47,6 +50,7 @@ class TweetScreen extends Component {
                         rounded
                         title="Refresh"
                         backgroundColor="#E91E63"
+                        onPress={this.handleRefreshTweet}
                     />
                     <Button
                         backgroundColor={twitterBlue}
@@ -67,6 +71,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#00aced',
         alignItems: 'center',
         justifyContent: 'center',
+        width: '100%',
     },
     white : {
         color: "#FFFFFF",
