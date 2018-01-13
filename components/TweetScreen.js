@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Button, Card, Text} from 'react-native-elements';
+import {Header, Button, Card, Text} from 'react-native-elements';
 import {retrieveGifUrlForString, retrieveRandomOpinion, retrieveRandomCrimeStatistic} from "../utilities/TweetGenerator";
+
+
+
 
 class TweetScreen extends Component {
 
@@ -42,10 +45,24 @@ class TweetScreen extends Component {
 
     render() {
         return (
-            <View style={styles.flexCenter}>
+
+
+            <View>
+
+                <Header
+                    style={styles.fullWidthButton}
+                    leftComponent={{ icon: 'menu', color: '#fff' }}
+                    centerComponent={{ text: 'TWEETOPHILE', style: { color: '#fff' } }}
+                    rightComponent={{ icon: 'home', color: '#fff'}}
+                    backgroundColor={"#E91E63"}
+                />
+
                 <Text h3 style={styles.white}>Your tweet is ready!</Text>
                 <Card
+
+
                     image={{uri: this.state.tweet.gif}}>
+
                     <Text style={{marginBottom: 10}}>
                         {this.state.tweet.crimeStat}
                         {this.state.tweet.content}
@@ -62,6 +79,9 @@ class TweetScreen extends Component {
                         rounded title="Tweet this!"
                     />
                 </Card>
+
+
+
             </View>
         );
     }
@@ -73,8 +93,9 @@ const styles = StyleSheet.create({
     flexCenter: {
         flex: 1,
         backgroundColor: '#00aced',
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: 'top',
+        justifyContent: 'flex-start',
+        minHeight: '100%',
         width: '100%',
     },
     white : {
