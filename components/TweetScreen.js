@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, Card, Text} from 'react-native-elements';
-import {retrieveGifUrlForString, retrieveRandomOpinion} from "../utilities/TweetGenerator";
+import {retrieveGifUrlForString, retrieveRandomOpinion, retrieveRandomCrimeStatistic} from "../utilities/TweetGenerator";
 
 class TweetScreen extends Component {
 
@@ -22,7 +22,7 @@ class TweetScreen extends Component {
     handleRefreshTweet = () => {
         const opinion = retrieveRandomOpinion();
         const tweetContent = opinion.string + " " + opinion.emoji;
-        retrieveGifUrlForString(opinion.emoji).then(url => {
+        retrieveGifUrlForString(opinion.emoji, function (url) {
             console.log(url);
             this.setState({
                 tweet: {
@@ -30,8 +30,11 @@ class TweetScreen extends Component {
                     gif: url,
                 },
             });
-        }).catch(err => {
-            console.log(err);
+        });
+        // TODO: Pass in the current latitude/longitude.
+        retrieveRandomCrimeStatistic('51.4256730', '-0.5630630', function (crimeStatistic) {
+            console.log(crimeStatistic);
+            // TODO: Add this to the tweet content.
         });
     };
 

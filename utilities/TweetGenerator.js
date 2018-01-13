@@ -1,17 +1,3 @@
-// NOTE: To use this API, you must do the following.
-//
-// import { retrieveRandomOpinion, retrieveGifUrlForString, retrieveRandomCrimeStatistic } from './utilities/TweetGenerator'
-//
-// var opinion = retrieveRandomOpinion();
-// console.log(opinion.string + " " + opinion.emoji);
-//
-// retrieveGifUrlForString(opinion.emoji, function (url) {
-//     console.log(url);
-// });
-//
-// retrieveRandomCrimeStatistic('51.4256730', '-0.5630630', function (crimeStatistic) {
-//     console.log(crimeStatistic);
-// });
 
 /*
  ██████  ██████  ██ ███    ██ ██  ██████  ███    ██     ███████ ████████ ██████  ██ ███    ██  ██████
