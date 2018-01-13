@@ -24,7 +24,7 @@ class TweetScreen extends Component {
     handleRefreshTweet = () => {
         const opinion = retrieveRandomOpinion();
         const tweetContent = opinion.string + " " + opinion.emoji;
-        retrieveGifUrlForString(opinion.emoji, function (url) {
+        retrieveGifUrlForString(opinion.emoji).then(function (url) {
             console.log(url);
             this.setState({
                 tweet: {
@@ -34,7 +34,7 @@ class TweetScreen extends Component {
             });
         });
         // TODO: Pass in the current latitude/longitude.
-        retrieveRandomCrimeStatistic('51.4256730', '-0.5630630', function (crimeStatistic) {
+        retrieveRandomCrimeStatistic('51.4256730', '-0.5630630').then(function (crimeStatistic) {
             console.log(crimeStatistic);
             this.setState({
                 tweet: {
