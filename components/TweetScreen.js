@@ -35,7 +35,7 @@ class TweetScreen extends Component {
         const {rest, stream} = twitter(this.state.oauth);
 
         rest.post('statuses/update', { status : this.state.tweet.fullTweet }).then((data) => {
-            console.log("Done" + data.stringify());
+            console.log("Done" + data);
         });
     }
 
