@@ -17,12 +17,16 @@ class TweetScreen extends Component {
                 crimeStat: "",
                 content: "",
             },
-            accessCode: this.props.accessCode,
+            accessCode: this.props.navigation.state.params.accessCode,
         }
     }
 
     componentDidMount() {
         this.handleRefreshTweet();
+    }
+
+    handleSendTweet = () => {
+        sendTweet(this.state.accessCode, this.state.tweet.fullTweet);
     }
 
     handleRefreshTweet = () => {
@@ -43,6 +47,7 @@ class TweetScreen extends Component {
                         gif: url,
                         crimeStat: crimeStatistic,
                         content: crimeStatistic + " " + generatedReaction,
+                        fullTweet: crimeStatistic + " " + generatedReaction + " " + url,
                     },
                 });
             });
@@ -57,6 +62,7 @@ class TweetScreen extends Component {
                         gif: url,
                         crimeStat: trumpQuote,
                         content: trumpQuote + " " + generatedReaction,
+                        fullTweet: trumpQuote + " " + generatedReaction + " " + url,
                     },
                 });
             });
@@ -66,8 +72,6 @@ class TweetScreen extends Component {
 
     render() {
         return (
-
-
             <View style={styles.container}>
 
                 <Header
@@ -81,10 +85,13 @@ class TweetScreen extends Component {
                 />
 
                 <Text h3 style={styles.white}>Your tweet is ready!</Text>
-                <Card
+                <Image
+                  style={{height: 500, width: 400}}
+                  source = {{uri: this.state.tweet.gif}}
+                  resizeMode = 'contain'
+                />
 
-
-                    image={{uri: this.state.tweet.gif}}>
+                <Card>
 
                     <Text style={{marginBottom: 10}}>
                         {this.state.tweet.content}
@@ -101,6 +108,7 @@ class TweetScreen extends Component {
                         <Button
                             style={styles.buttons}
                             backgroundColor={twitterBlue}
+                            onPress={this.handleSendTweet}
                             rounded title="Tweet this!"
                         />
                         <Button
@@ -114,8 +122,6 @@ class TweetScreen extends Component {
 
                     </View>
                 </Card>
-
-
             </View>
         );
     }

@@ -3,7 +3,6 @@ import LoginScreen from './components/LoginScreen';
 import AuthorizeScreen from "./components/AuthorizeScreen";
 import TweetScreen from './components/TweetScreen';
 import {StyleSheet, View} from 'react-native';
-import postToTwitter from './utilities/twitter';
 import {StackNavigator} from 'react-navigation';
 
 const App = StackNavigator(
@@ -13,7 +12,11 @@ const App = StackNavigator(
         TweetScreen: {screen: TweetScreen},
     },
     {
-        header: null,
+        headerMode: "float",
+        navigationOptions: {
+            headerTitle: "Tweetophile",
+            headerTintColor: "#E91E63",
+        },
     }
 );
 
