@@ -1,24 +1,21 @@
 import React from 'react';
-// import LoginScreen from './components/LoginScreen';
-// import AuthorizeScreen from "./components/AuthorizeScreen";
+import LoginScreen from './components/LoginScreen';
+import AuthorizeScreen from "./components/AuthorizeScreen";
 import TweetScreen from './components/TweetScreen';
 import {StyleSheet, View} from 'react-native';
 import postToTwitter from './utilities/twitter';
+import {StackNavigator} from 'react-navigation';
 
-export default class App extends React.Component {
-
-    componentDidMount() {
-        // postToTwitter();
+const App = StackNavigator(
+    {
+        Login: {screen: LoginScreen},
+        AuthorizeScreen: {screen: AuthorizeScreen},
+        TweetScreen: {screen: TweetScreen},
+    },
+    {
+        header: null,
     }
-
-    render() {
-        return (
-            <View style={styles.container}>
-                <TweetScreen/>
-            </View>
-        );
-    }
-}
+);
 
 const styles = StyleSheet.create({
     container: {
@@ -28,3 +25,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
+
+export default App;

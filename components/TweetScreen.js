@@ -73,6 +73,8 @@ class TweetScreen extends Component {
 
                 <Header
                     style={styles.flexCenter}
+                    barStyle="light-content"
+                    translucent
                     leftComponent={{icon: 'menu', color: '#fff'}}
                     centerComponent={{text: 'TWEETOPHILE', style: {color: '#fff'}}}
                     rightComponent={{icon: 'home', color: '#fff'}}
@@ -88,17 +90,21 @@ class TweetScreen extends Component {
                     <Text style={{marginBottom: 10}}>
                         {this.state.tweet.content}
                     </Text>
-                    <Button
-                        icon={{name: "refresh", type: "material-icons"}}
-                        rounded
-                        title="Refresh"
-                        backgroundColor="#E91E63"
-                        onPress={this.handleRefreshTweet}
-                    />
-                    <Button
-                        backgroundColor={twitterBlue}
-                        rounded title="Tweet this!"
-                    />
+                    <View style={styles.buttonGroup}>
+                        <Button
+                            style={styles.buttons}
+                            icon={{name: "refresh", type: "material-icons"}}
+                            rounded
+                            title="Refresh"
+                            backgroundColor="#E91E63"
+                            onPress={this.handleRefreshTweet}
+                        />
+                        <Button
+                            style={styles.buttons}
+                            backgroundColor={twitterBlue}
+                            rounded title="Tweet this!"
+                        />
+                    </View>
                 </Card>
 
 
@@ -112,6 +118,14 @@ const twitterBlue = '#00aced';
 const styles = StyleSheet.create({
     white: {
         color: "#FFFFFF",
+    },
+    buttonGroup: {
+        display: 'flex',
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    buttons: {
+        flex:1,
     },
     container: {
         display: "flex",
