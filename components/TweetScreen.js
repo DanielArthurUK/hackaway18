@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Header, Button, Card, Text} from 'react-native-elements';
-import {retrieveGifUrlForString, retrieveRandomOpinion, retrieveRandomCrimeStatistic} from "../utilities/TweetGenerator";
-
-
+import {Button, Card, Header, Text} from 'react-native-elements';
+import {
+    retrieveGifUrlForString, retrieveRandomCrimeStatistic,
+    retrieveRandomOpinion
+} from "../utilities/TweetGenerator";
 
 
 class TweetScreen extends Component {
@@ -11,11 +12,11 @@ class TweetScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tweet : {
-                reaction : "Waiting to retrieve your tweet!",
-                gif : "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image4.jpg",
-                crimeStat : "",
-                content : "",
+            tweet: {
+                reaction: "Waiting to retrieve your tweet!",
+                gif: "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image4.jpg",
+                crimeStat: "",
+                content: "",
             },
             accessCode: this.props.accessCode,
         }
@@ -37,7 +38,7 @@ class TweetScreen extends Component {
                         reaction: generatedReaction,
                         gif: url,
                         crimeStat: crimeStatistic,
-                        content: crimeStatistic+" "+generatedReaction,
+                        content: crimeStatistic + " " + generatedReaction,
                     },
                 });
             });
@@ -49,13 +50,13 @@ class TweetScreen extends Component {
         return (
 
 
-            <View>
+            <View style={styles.container}>
 
                 <Header
-                    style={styles.fullWidthButton}
-                    leftComponent={{ icon: 'menu', color: '#fff' }}
-                    centerComponent={{ text: 'TWEETOPHILE', style: { color: '#fff' } }}
-                    rightComponent={{ icon: 'home', color: '#fff'}}
+                    style={styles.flexCenter}
+                    leftComponent={{icon: 'menu', color: '#fff'}}
+                    centerComponent={{text: 'TWEETOPHILE', style: {color: '#fff'}}}
+                    rightComponent={{icon: 'home', color: '#fff'}}
                     backgroundColor={"#E91E63"}
                 />
 
@@ -82,7 +83,6 @@ class TweetScreen extends Component {
                 </Card>
 
 
-
             </View>
         );
     }
@@ -91,17 +91,15 @@ class TweetScreen extends Component {
 const twitterBlue = '#00aced';
 
 const styles = StyleSheet.create({
-    flexCenter: {
-        flex: 1,
-        backgroundColor: '#00aced',
-        alignItems: 'top',
-        justifyContent: 'flex-start',
-        minHeight: '100%',
-        width: '100%',
-    },
-    white : {
+    white: {
         color: "#FFFFFF",
     },
+    container: {
+        display: "flex",
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "flex-start",
+    }
 });
 
 export default TweetScreen;
