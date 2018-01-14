@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import {Button, Card, Header, Text} from 'react-native-elements';
 import {
     retrieveGifUrlForString, retrieveRandomCrimeStatistic,
@@ -74,7 +74,7 @@ class TweetScreen extends Component {
         return (
             <View style={styles.container}>
 
-                <Header
+                {/* <Header
                     style={styles.flexCenter}
                     barStyle="light-content"
                     translucent
@@ -82,21 +82,21 @@ class TweetScreen extends Component {
                     centerComponent={{text: 'TWEETOPHILE', style: {color: '#fff'}}}
                     rightComponent={{icon: 'home', color: '#fff'}}
                     backgroundColor={"#E91E63"}
-                />
-
-                <Text h3 style={styles.white}>Your tweet is ready!</Text>
-                <Image
-                  style={{height: 500, width: 400}}
-                  source = {{uri: this.state.tweet.gif}}
-                  resizeMode = 'contain'
-                />
-
+                /> */}
+                <Text h3 style={styles.white}>     Your tweet is ready!</Text>
                 <Card>
+                    <Image
+                      style={{height: 340, width: 312 }}
+                      source = {{uri: this.state.tweet.gif}}
+                      resizeMode = 'cover'
+                    />
 
-                    <Text style={{marginBottom: 10}}>
+                    <Text style={{marginBottom: 5, marginTop: 5, height: 100}}>
                         {this.state.tweet.content}
                     </Text>
-                    <View style={styles.buttonGroup}>
+                </Card>
+
+                <Card>
                         <Button
                             style={styles.buttons}
                             icon={{name: "refresh", type: "material-icons"}}
@@ -113,14 +113,10 @@ class TweetScreen extends Component {
                         />
                         <Button
                             style={styles.buttons}
-                            icon={{name: "I'm Feeling Tweety", type: "material-icons"}}
-                            rounded
-                            title="I'm feeling Tweety"
+                            rounded title="I'm feeling Tweety"
                             backgroundColor="#32CD32"
                             onPress={this.handleRefreshTweet}
                         />
-
-                    </View>
                 </Card>
             </View>
         );
@@ -131,21 +127,26 @@ const twitterBlue = '#00aced';
 
 const styles = StyleSheet.create({
     white: {
-        color: "#FFFFFF",
+        display: 'flex',
+        color: "#00aced",
+        justifyContent: "center",
+        flex: 1,
+        flexDirection: "column",
     },
     buttonGroup: {
         display: 'flex',
-        flexDirection: "row",
-        justifyContent: "space-between",
+        flexDirection: "column",
+        justifyContent: "center",
     },
     buttons: {
-        flex:1,
     },
+
     container: {
         display: "flex",
         flex: 1,
         flexDirection: "column",
-        justifyContent: "flex-start",
+        justifyContent: "center",
+        marginTop: 3
     }
 });
 
