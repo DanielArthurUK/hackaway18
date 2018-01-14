@@ -6,7 +6,6 @@ import {
     retrieveRandomOpinion, retrieveRandomTrumpQuote
 } from "../utilities/TweetGenerator";
 
-
 class TweetScreen extends Component {
 
     constructor(props) {
@@ -104,6 +103,15 @@ class TweetScreen extends Component {
                             backgroundColor={twitterBlue}
                             rounded title="Tweet this!"
                         />
+                        <Button
+                            style={styles.buttons}
+                            icon={{name: "I'm Feeling Tweety", type: "material-icons"}}
+                            rounded
+                            title="I'm feeling Tweety"
+                            backgroundColor="#32CD32"
+                            onPress={this.handleRefreshTweet}
+                        />
+
                     </View>
                 </Card>
 
