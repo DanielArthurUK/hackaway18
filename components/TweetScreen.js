@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {Button, Card, Header, Text} from 'react-native-elements';
 import {
     retrieveGifUrlForString, retrieveRandomCrimeStatistic,
-    retrieveRandomOpinion
+    retrieveRandomOpinion, retrieveRandomTrumpQuote
 } from "../utilities/TweetGenerator";
 
 
@@ -29,7 +29,12 @@ class TweetScreen extends Component {
     handleRefreshTweet = () => {
         const opinion = retrieveRandomOpinion();
         const generatedReaction = opinion.string + " " + opinion.emoji;
-        retrieveGifUrlForString(opinion.emoji).then((url) => {
+
+        // Choose the API to use
+
+        if (Math.round(Math.random()) == 0) {
+
+          retrieveGifUrlForString(opinion.emoji).then((url) => {
             // TODO: Pass in the current latitude/longitude.
             retrieveRandomCrimeStatistic('51.4256730', '-0.5630630').then((crimeStatistic) => {
                 console.log(crimeStatistic);
@@ -42,9 +47,23 @@ class TweetScreen extends Component {
                     },
                 });
             });
-        });
-
-    };
+          });
+        } else {
+          retrieveGifUrlForString("trump").then((url) => {
+            retrieveRandomTrumpQuote().then((trumpQuote) => {
+                console.log(trumpQuote);
+                this.setState({
+                    tweet: {
+                        reaction: generatedReaction,
+                        gif: url,
+                        crimeStat: trumpQuote,
+                        content: trumpQuote + " " + generatedReaction,
+                    },
+                });
+            });
+          });
+        }
+    }
 
     render() {
         return (

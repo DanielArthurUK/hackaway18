@@ -118,3 +118,23 @@ export async function retrieveRandomCrimeStatistic(latitude, longitude) {
         console.error(error);
     }
 }
+
+export async function retrieveRandomTrumpQuote() {
+  console.log("Hello");
+    try {
+        const response = await fetch(
+            'https://api.whatdoestrumpthink.com/api/v1/quotes/random'
+        );
+        const responseJson = await response.json();
+        console.log(responseJson);
+
+        console.log("Type of response: "+typeof response);
+
+        let trumpQuote = responseJson.message;
+
+        return "As President Donald Trump famously said: \" " + trumpQuote + " \""
+
+    } catch (error) {
+        console.error(error);
+    }
+}

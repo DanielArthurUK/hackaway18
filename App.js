@@ -8,7 +8,7 @@ import postToTwitter from './utilities/twitter';
 export default class App extends React.Component {
 
     componentDidMount() {
-        postToTwitter()
+        // postToTwitter();
     }
 
     render() {
