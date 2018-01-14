@@ -85,10 +85,13 @@ class TweetScreen extends Component {
                 />
 
                 <Text h3 style={styles.white}>Your tweet is ready!</Text>
-                <Card
+                <Image
+                  style={{height: 500, width: 400}}
+                  source = {{uri: this.state.tweet.gif}}
+                  resizeMode = 'contain'
+                />
 
-
-                    image={{uri: this.state.tweet.gif}}>
+                <Card>
 
                     <Text style={{marginBottom: 10}}>
                         {this.state.tweet.content}
@@ -108,6 +111,15 @@ class TweetScreen extends Component {
                             onPress={this.handleSendTweet}
                             rounded title="Tweet this!"
                         />
+                        <Button
+                            style={styles.buttons}
+                            icon={{name: "I'm Feeling Tweety", type: "material-icons"}}
+                            rounded
+                            title="I'm feeling Tweety"
+                            backgroundColor="#32CD32"
+                            onPress={this.handleRefreshTweet}
+                        />
+
                     </View>
                 </Card>
             </View>
