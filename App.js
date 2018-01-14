@@ -15,7 +15,7 @@ const App = StackNavigator(
         headerMode: "float",
         navigationOptions: {
             headerTitle: "Tweetophile",
-            headerTintColor: twitterBlue,
+            headerTintColor: "#00aced",
         },
     }
 );

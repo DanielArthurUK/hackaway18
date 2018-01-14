@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import {Button, Card, Header, Text} from 'react-native-elements';
 import {
     retrieveGifUrlForString, retrieveRandomCrimeStatistic,
