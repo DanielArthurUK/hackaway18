@@ -2,8 +2,12 @@ import React from 'react';
 import LoginScreen from './components/LoginScreen';
 import AuthorizeScreen from "./components/AuthorizeScreen";
 import TweetScreen from './components/TweetScreen';
-import {StyleSheet, View} from 'react-native';
-import {StackNavigator} from 'react-navigation';
+import {
+    StyleSheet, View
+} from 'react-native';
+import {
+    StackNavigator
+} from 'react-navigation';
 
 const App = StackNavigator(
     {

@@ -4,6 +4,15 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tauth</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>hackaway18</string>
 	<key>CFBundleExecutable</key>
@@ -39,7 +48,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>

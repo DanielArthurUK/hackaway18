@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Platform, Linking} from 'react-native';
 import {Button, FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
+import twitter, {auth} from 'react-native-twitter';
 
 class AuthorizeScreen extends Component {
 
@@ -15,10 +16,41 @@ class AuthorizeScreen extends Component {
         }
     }
 
-    handleAccessCode = () => {
+    componentDidMount() {
+        if (Platform.OS === 'android') {
+            Linking.getInitialURL().then(url => {
+                // This doesn't yet work
+            });
+        } else {
+            Linking.addEventListener('url', this.handleIosOpenURL);
+        }
+
+        auth({
+            "consumerKey" : "yXXNSwhnphe4uXwxz7EDR50bq",
+            "consumerSecret" : "xZkQcqWEUFBmzIkz5uESb6AK6Ix6ZzDLozU36jvEK6OIaRbn0F"
+        }, "tauth://components/AuthorizeScreen").then(({accessToken, accessTokenSecret, id, name}) => {
+            this.state = {
+                oauth: {
+                    token: accessToken,
+                    tokenSecret: accessTokenSecret
+                }
+            }
+            this.proceedToTweetScreen();
+        });
+    }
+
+    componentWillUnmount() {
+        Linking.removeEventListener('url', this.handleIosOpenURL);
+    }
+
+    handleIosOpenURL = (event) => {
+
+    }
+
+    proceedToTweetScreen = () => {
         this.props.navigation.navigate(
             'TweetScreen',
-            {accessCode: this.state.accessCode}
+            {oath: this.state.oauth}
         );
     }
 
