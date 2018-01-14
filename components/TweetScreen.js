@@ -61,7 +61,7 @@ class TweetScreen extends Component {
                     },
                 });
             });
-          });
+          })
         }
     }
 
