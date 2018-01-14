@@ -6,7 +6,6 @@ import {
     retrieveRandomOpinion, retrieveRandomTrumpQuote
 } from "../utilities/TweetGenerator";
 
-
 class TweetScreen extends Component {
 
     constructor(props) {
@@ -18,12 +17,16 @@ class TweetScreen extends Component {
                 crimeStat: "",
                 content: "",
             },
-            accessCode: this.props.accessCode,
+            accessCode: this.props.navigation.state.params.accessCode,
         }
     }
 
     componentDidMount() {
         this.handleRefreshTweet();
+    }
+
+    handleSendTweet = () => {
+        sendTweet(this.state.accessCode, this.state.tweet.fullTweet);
     }
 
     handleRefreshTweet = () => {
@@ -44,6 +47,7 @@ class TweetScreen extends Component {
                         gif: url,
                         crimeStat: crimeStatistic,
                         content: crimeStatistic + " " + generatedReaction,
+                        fullTweet: crimeStatistic + " " + generatedReaction + " " + url,
                     },
                 });
             });
@@ -58,6 +62,7 @@ class TweetScreen extends Component {
                         gif: url,
                         crimeStat: trumpQuote,
                         content: trumpQuote + " " + generatedReaction,
+                        fullTweet: trumpQuote + " " + generatedReaction + " " + url,
                     },
                 });
             });
@@ -67,8 +72,6 @@ class TweetScreen extends Component {
 
     render() {
         return (
-
-
             <View style={styles.container}>
 
                 <Header
@@ -102,12 +105,11 @@ class TweetScreen extends Component {
                         <Button
                             style={styles.buttons}
                             backgroundColor={twitterBlue}
+                            onPress={this.handleSendTweet}
                             rounded title="Tweet this!"
                         />
                     </View>
                 </Card>
-
-
             </View>
         );
     }

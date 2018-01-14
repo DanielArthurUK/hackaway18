@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Text, Button} from 'react-native-elements';
-// import postToTwitter from './utilities/twitter';
+import twitter, {auth} from 'react-native-twitter';
 
 class LoginScreen extends Component {
 
     handleTwitterLogin = () => {
-        // postToTwitter();
-        this.props.navigation.navigate('AuthorizeScreen');
+
+        // auth(twitterCreds, 'oob')
+        //     .then(({accessToken, accessTokenSecret}) => {
+        //         console.log("Token: "+accessToken);
+        //         console.log("Token secret: "+accessTokenSecret);
+        //     });
+        this.props.navigation.navigate(
+            'AuthorizeScreen',
+        );
     }
+
 
     render() {
         return (

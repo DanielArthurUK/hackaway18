@@ -8,8 +8,18 @@ class AuthorizeScreen extends Component {
         super(props);
 
         this.state = {
-            accessCode: "",
+            // oauth: {
+            //     token: this.props.navigation.state.params.oauth.token,
+            //     tokenSecret: this.props.navigation.state.params.oauth.tokenSecret,
+            // }
         }
+    }
+
+    handleAccessCode = () => {
+        this.props.navigation.navigate(
+            'TweetScreen',
+            {accessCode: this.state.accessCode}
+        );
     }
 
     handleKeyPress = (evt) => {
@@ -24,7 +34,7 @@ class AuthorizeScreen extends Component {
                 <FormLabel>Twitter Pin Code</FormLabel>
                 <FormInput value={this.state.accessCode} onChangeText={this.handleKeyPress} />
                 <FormValidationMessage>You need to fill in this information from Twitter</FormValidationMessage>
-                <Button rounded backgroundColor="#FF00FF" title="Enter" />
+                <Button onPress={this.handleAccessCode} rounded backgroundColor="#FF00FF" title="Enter" />
             </View>
         );
     }
