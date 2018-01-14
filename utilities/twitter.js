@@ -6,7 +6,7 @@ export default postToTwitter = () => {
         consumerSecret: 'xZkQcqWEUFBmzIkz5uESb6AK6Ix6ZzDLozU36jvEK6OIaRbn0F',
         //  accessToken:       '716332538-Yxh0TeMJnEbhbxfuaBBoQheZh29FOT1D21aQpe6q',
         //  accessTokenSecret: 'wObTovEnts2w4jWDRrtB9y7mfNWPqAgzqAOYKqUpH5Ea8',
-    }).then(function(data) {
+    }, "").then(function(data) {
         console.log(data);
     }).catch(function(err) {
         console.log(err);
