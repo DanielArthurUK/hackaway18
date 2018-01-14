@@ -5,6 +5,7 @@ import {
     retrieveGifUrlForString, retrieveRandomCrimeStatistic,
     retrieveRandomOpinion, retrieveRandomTrumpQuote
 } from "../utilities/TweetGenerator";
+import twitter, {auth} from 'react-native-twitter';
 
 class TweetScreen extends Component {
 
@@ -17,7 +18,12 @@ class TweetScreen extends Component {
                 crimeStat: "",
                 content: "",
             },
-            accessCode: this.props.navigation.state.params.accessCode,
+            oauth: {
+                consumerKey: this.props.navigation.state.params.oath.consumerKey,
+                consumerSecret: this.props.navigation.state.params.oath.consumerSecret,
+                accessToken: this.props.navigation.state.params.oath.accessToken,
+                accessTokenSecret: this.props.navigation.state.params.oath.accessTokenSecret
+            }
         }
     }
 
@@ -26,7 +32,11 @@ class TweetScreen extends Component {
     }
 
     handleSendTweet = () => {
-        sendTweet(this.state.accessCode, this.state.tweet.fullTweet);
+        const {rest, stream} = twitter(this.state.oauth);
+
+        rest.post('statuses/update', { status : this.state.tweet.fullTweet }).then((data) => {
+            console.log("Done" + data.stringify());
+        });
     }
 
     handleRefreshTweet = () => {

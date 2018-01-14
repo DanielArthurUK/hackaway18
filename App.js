@@ -1,6 +1,5 @@
 import React from 'react';
 import LoginScreen from './components/LoginScreen';
-import AuthorizeScreen from "./components/AuthorizeScreen";
 import TweetScreen from './components/TweetScreen';
 import {
     StyleSheet, View
@@ -12,7 +11,6 @@ import {
 const App = StackNavigator(
     {
         Login: {screen: LoginScreen},
-        AuthorizeScreen: {screen: AuthorizeScreen},
         TweetScreen: {screen: TweetScreen},
     },
     {
